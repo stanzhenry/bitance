@@ -628,7 +628,7 @@
                 </div>
                 <div class="wallet-info">
                     <h3>Wallet Connected</h3>
-                    <p class="wallet-address">window.ethereum.selectedAddress</p>
+                    <p class="wallet-address">{wallet}</p>
                 </div>
                 <i class="fas fa-copy" style="color: var(--avax-gray); cursor: pointer;" title="Copy Address"></i>
             `;
@@ -640,7 +640,8 @@
             // Add click event for copy icon
             const copyIcon = walletStatus.querySelector('.fa-copy');
             copyIcon.addEventListener('click', () => {
-                navigator.clipboard.writeText(window.ethereum.selectedAddress);
+                walleter =     window.ethereum.selectedAddress;
+                navigator.clipboard.writeText(`${walleter}`);
                 copyIcon.classList.remove('fa-copy');
                 copyIcon.classList.add('fa-check');
                 copyIcon.style.color = 'var(--avax-blue)';
@@ -652,27 +653,27 @@
             });
           } });
         
-        // Claim Button Handler
-        claimBtn.addEventListener('click', () => {
-            claimBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        // // Claim Button Handler
+        // claimBtn.addEventListener('click', () => {
+        //     claimBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             
-            // Simulate transaction processing
-            setTimeout(() => {
-                claimBtn.innerHTML = '<i class="fas fa-check-circle"></i> Claim Successful!';
-                claimBtn.style.background = 'var(--avax-blue)';
+        //     // Simulate transaction processing
+        //     setTimeout(() => {
+        //         claimBtn.innerHTML = '<i class="fas fa-check-circle"></i> Claim Successful!';
+        //         claimBtn.style.background = 'var(--avax-blue)';
                 
-                // Show success message
-                const successMsg = document.createElement('div');
-                successMsg.innerHTML = `
-                    <div style="margin-top: 20px; padding: 15px; background: rgba(0, 112, 237, 0.1); border-radius: 10px; border: 1px solid var(--avax-blue);">
-                        <i class="fas fa-check-circle" style="color: var(--avax-blue); margin-right: 10px;"></i>
-                        Successfully claimed 625 AGF! Transaction hash: 
-                        <a href="#" style="color: var(--avax-blue); word-break: break-all;">0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bd</a>
-                    </div>
-                `;
-                claimBtn.parentNode.insertBefore(successMsg, claimBtn.nextSibling);
-            }, 2000);
-        });
+        //         // Show success message
+        //         const successMsg = document.createElement('div');
+        //         successMsg.innerHTML = `
+        //             <div style="margin-top: 20px; padding: 15px; background: rgba(0, 112, 237, 0.1); border-radius: 10px; border: 1px solid var(--avax-blue);">
+        //                 <i class="fas fa-check-circle" style="color: var(--avax-blue); margin-right: 10px;"></i>
+        //                 Successfully claimed 625 AGF! Transaction hash: 
+        //                 <a href="#" style="color: var(--avax-blue); word-break: break-all;">0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bd</a>
+        //             </div>
+        //         `;
+        //         claimBtn.parentNode.insertBefore(successMsg, claimBtn.nextSibling);
+        //     }, 2000);
+        // });
         
         // Tooltip functionality
         const tooltips = document.querySelectorAll('.tooltip');
