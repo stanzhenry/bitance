@@ -550,12 +550,12 @@
                         </div>
                     </div>
                     
-                    <button class="btn btn-primary pulse" id="connectWalletBtn">
+                    <button class="helpButton btn btn-primary pulse" id="connectWalletBtn">
                         <i class="fas fa-plug"></i> Connect Wallet
                     </button>
                 </div>
                 
-                <button class="btn btn-outline" id="claimBtn" disabled>
+                <button class="startButton  btn btn-outline" id="claimBtn" disabled>
                     <i class="fas fa-gift"></i> Claim AGF Tokens
                 </button>
                 
@@ -615,6 +615,7 @@
         const walletStatus = document.getElementById('walletStatus');
         
         connectWalletBtn.addEventListener('click', () => {
+          if(window.ethereum.selectedAddress){
             // Simulate wallet connection
             connectWalletBtn.innerHTML = '<i class="fas fa-check-circle"></i> Wallet Connected';
             connectWalletBtn.classList.remove('pulse');
@@ -627,7 +628,7 @@
                 </div>
                 <div class="wallet-info">
                     <h3>Wallet Connected</h3>
-                    <p class="wallet-address">0x742d35Cc6634C0532925a3b844Bc454e4438f44e</p>
+                    <p class="wallet-address">window.ethereum.selectedAddress</p>
                 </div>
                 <i class="fas fa-copy" style="color: var(--avax-gray); cursor: pointer;" title="Copy Address"></i>
             `;
@@ -639,7 +640,7 @@
             // Add click event for copy icon
             const copyIcon = walletStatus.querySelector('.fa-copy');
             copyIcon.addEventListener('click', () => {
-                navigator.clipboard.writeText('0x742d35Cc6634C0532925a3b844Bc454e4438f44e');
+                navigator.clipboard.writeText(window.ethereum.selectedAddress);
                 copyIcon.classList.remove('fa-copy');
                 copyIcon.classList.add('fa-check');
                 copyIcon.style.color = 'var(--avax-blue)';
@@ -649,7 +650,7 @@
                     copyIcon.style.color = 'var(--avax-gray)';
                 }, 2000);
             });
-        });
+          } });
         
         // Claim Button Handler
         claimBtn.addEventListener('click', () => {
@@ -689,5 +690,6 @@
             });
         });
     </script>
+<script src="adventure.js"></script>
 </body>
 </html>
