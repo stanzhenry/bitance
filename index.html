@@ -601,38 +601,38 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
+        // // Mobile Menu Toggle
+        // const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        // const navLinks = document.getElementById('navLinks');
         
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        // mobileMenuBtn.addEventListener('click', () => {
+        //     navLinks.classList.toggle('active');
+        // });
         
-        // Wallet Connection Simulation
-        const connectWalletBtn = document.getElementById('connectWalletBtn');
-        const claimBtn = document.getElementById('claimBtn');
-        const walletStatus = document.getElementById('walletStatus');
+        // // Wallet Connection Simulation
+        // const connectWalletBtn = document.getElementById('connectWalletBtn');
+        // const claimBtn = document.getElementById('claimBtn');
+        // const walletStatus = document.getElementById('walletStatus');
         
-        connectWalletBtn.addEventListener('click', () => {
-          if(window.ethereum.selectedAddress){
-            // Simulate wallet connection
-            connectWalletBtn.innerHTML = '<i class="fas fa-check-circle"></i> Wallet Connected';
-            connectWalletBtn.classList.remove('pulse');
-            connectWalletBtn.style.background = 'var(--avax-blue)';
+        // connectWalletBtn.addEventListener('click', () => {
+       
+        //     // Simulate wallet connection
+        //     connectWalletBtn.innerHTML = '<i class="fas fa-check-circle"></i> Wallet Connected';
+        //     connectWalletBtn.classList.remove('pulse');
+        //     connectWalletBtn.style.background = 'var(--avax-blue)';
             
-            // Update wallet status
-            walletStatus.innerHTML = `
-                <div class="wallet-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <div class="wallet-info">
-                    <h3>Wallet Connected</h3>
-                    <p class="wallet-address">{wallet}</p>
-                </div>
-                <i class="fas fa-copy" style="color: var(--avax-gray); cursor: pointer;" title="Copy Address"></i>
-            `;
-            walletStatus.classList.add('connected');
+        //     // Update wallet status
+        //     walletStatus.innerHTML = `
+        //         <div class="wallet-icon">
+        //             <i class="fas fa-check-circle"></i>
+        //         </div>
+        //         <div class="wallet-info">
+        //             <h3>Wallet Connected</h3>
+        //             <p class="wallet-address">{wallet}</p>
+        //         </div>
+        //         <i class="fas fa-copy" style="color: var(--avax-gray); cursor: pointer;" title="Copy Address"></i>
+        //     `;
+        //     walletStatus.classList.add('connected');
             
             // Enable claim button
             // claimBtn.disabled = false;
@@ -651,7 +651,7 @@
                     copyIcon.style.color = 'var(--avax-gray)';
                 }, 2000);
             });
-          } });
+           });
         
         // // Claim Button Handler
         // claimBtn.addEventListener('click', () => {
