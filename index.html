@@ -550,15 +550,15 @@
                         </div>
                     </div>
                     
-                    <button class="helpButton btn btn-primary pulse" id="connectWalletBtn">
+                    <button class="connectButton btn btn-primary pulse" id="connectWalletBtn">
                         <i class="fas fa-plug"></i> Connect Wallet
                     </button>
                 </div>
                 
-                <button class="startButton  btn btn-outline" id="claimBtn" disabled>
+<!--                 <button class="startButton  btn btn-outline" id="claimBtn" disabled>
                     <i class="fas fa-gift"></i> Claim AGF Tokens
                 </button>
-                
+                 -->
                 <div class="claim-steps">
                     <div class="step">
                         <div class="step-number">1</div>
@@ -635,7 +635,7 @@
             walletStatus.classList.add('connected');
             
             // Enable claim button
-            claimBtn.disabled = false;
+            // claimBtn.disabled = false;
             
             // Add click event for copy icon
             const copyIcon = walletStatus.querySelector('.fa-copy');
